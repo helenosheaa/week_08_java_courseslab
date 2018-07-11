@@ -13,14 +13,16 @@ public class Student {
     private  int age;
     private int enrollmentNumber;
     private Course course;
+    private  Mentor mentor;
 
     public Student(){}
 
-    public Student(String name, int age, int enrollmentNumber, Course course){
+    public Student(String name, int age, int enrollmentNumber, Course course, Mentor mentor){
         this.name = name;
         this.age = age;
         this.enrollmentNumber = enrollmentNumber;
         this.course = course;
+        this.mentor = mentor;
     }
 
     @Id
@@ -67,5 +69,16 @@ public class Student {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+
+    @OneToOne
+    @JoinColumn(name = "mentor_id", nullable = false)
+    public Mentor getMentor() {
+        return mentor;
+    }
+
+    public void setMentor(Mentor mentor) {
+        this.mentor = mentor;
     }
 }
