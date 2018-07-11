@@ -1,5 +1,6 @@
 import db.DBCourse;
 import db.DBHelper;
+import db.DBMentor;
 import models.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class Runner {
 
         Student student1 = new Student("James", 28, 567, course1, mentor1);
         DBHelper.save(student1);
+
         Student student2 = new Student("Helen", 21, 12, course1, mentor2);
         DBHelper.save(student2);
 
@@ -34,6 +36,7 @@ public class Runner {
 
         List<Lesson> lessondsFromCourse = DBCourse.getLessonsFromCourse(course1);
 
+        Student mentorsStudent1 = DBMentor.getMentorsStudent(mentor1);
     }
 
 }

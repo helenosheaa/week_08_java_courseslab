@@ -8,14 +8,13 @@ import javax.persistence.*;
 public class Mentor {
     private int id;
     private  String name;
+    private Student student;
 
     public Mentor(){}
 
-    private Student student;
 
     public Mentor(String name){
         this.name = name;
-        this.student = student;
 
     }
 
