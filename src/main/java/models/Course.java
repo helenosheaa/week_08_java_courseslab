@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="courses")
@@ -9,6 +10,7 @@ public class Course {
     private int id;
     private String title;
     private String level;
+    private List<Student> students;
 
     public Course() {}
 
@@ -44,6 +46,15 @@ public class Course {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 }
 
