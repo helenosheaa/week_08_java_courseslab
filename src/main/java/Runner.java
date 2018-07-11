@@ -18,15 +18,17 @@ public class Runner {
         Mentor mentor1 = new Mentor("Bryan");
         DBHelper.save(mentor1);
 
-        Lesson lesson1 = new Lesson("Hibernate", 22);
+        Lesson lesson1 = new Lesson("Hibernate", 22, course1);
         DBHelper.save(lesson1);
-        Lesson lesson2 = new Lesson("Intellij", 22);
+        Lesson lesson2 = new Lesson("Intellij", 22, course1);
         DBHelper.save(lesson2);
 
         Instructor instructor1 = new Instructor();
         DBHelper.save(instructor1);
 
         List<Student> studentsOnCourse1 = DBCourse.getStudentsOnCourse(course1);
+
+        List<Lesson> lessondsFromCourse = DBCourse.getLessonsFromCourse(course1);
 
     }
 

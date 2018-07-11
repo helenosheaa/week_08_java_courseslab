@@ -9,12 +9,14 @@ public class Lesson {
     private int id;
     private String title;
     private int classRoomNo;
+    private Course course;
 
     public Lesson(){}
 
-    public Lesson(String title, int classRoomNo){
+    public Lesson(String title, int classRoomNo, Course course){
         this.title = title;
         this.classRoomNo = classRoomNo;
+        this.course = course;
     }
 
     @Id
@@ -44,5 +46,15 @@ public class Lesson {
 
     public void setClassRoomNo(int classRoomNo) {
         this.classRoomNo = classRoomNo;
+    }
+
+   @ManyToOne
+   @JoinColumn(name = "course_id", nullable = false)
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

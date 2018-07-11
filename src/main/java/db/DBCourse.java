@@ -1,6 +1,7 @@
 package db;
 
 import models.Course;
+import models.Lesson;
 import models.Student;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -26,6 +27,21 @@ public class DBCourse {
             session.close();
         }
         return students;
+    }
+
+    public static List<Lesson> getLessonsFromCourse(Course course) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Lesson> lessons = null;
+        try {
+            Criteria cr = session.createCriteria(Lesson.class);
+            cr.add(Restrictions.eq("course", course));
+            lessons = cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return lessons;
     }
 
 }
